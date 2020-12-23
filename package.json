@@ -1,0 +1,19 @@
+{
+  "name": "shop_homepage",
+  "version": "1.0.0",
+  "description": "[Shop Homepage](https://startbootstrap.com/template/shop-homepage/) is a basic HTML online store homepage template for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/).",
+  "main": "index.js",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gh-yababay:yababay/startbootstrap-shop-homepage.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
