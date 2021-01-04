@@ -1,0 +1,10 @@
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
