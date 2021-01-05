@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 function mapState ({basket}) {
+    const total = basket.reduce((acc, el)=> acc + el.qnty * el.price, 0)
     return (
         <>
             <table className="table">
@@ -22,6 +23,10 @@ function mapState ({basket}) {
                         </tr>
                     )
                   })}
+                <tr>
+                    <td colspan="2"><b>Total:</b></td>
+                    <td>{total}</td>
+                </tr>
                 </tbody>
             </table>
         </>
@@ -29,7 +34,9 @@ function mapState ({basket}) {
 }
 
 const mapStateToProps = state => {
-    return {basket: state.basket};
+    return {
+        basket: state.basket
+    };
 };
 
 export default connect(
