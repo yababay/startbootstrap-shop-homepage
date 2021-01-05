@@ -1,40 +1,39 @@
 import { connect } from 'react-redux';
-import { initShowcase, toBasket } from '../actions';
+import axios from 'axios';
+import { createStore, addToBasket } from '../store/actions';
 import Card from './Card';
 
-function FulfillShowcase ({store, toBasket}) {
+function mapState ({showcase, addToBasket}) {
   return (
     <>  
         <h2>The Showcase</h2>      
         <div className="row">
-          {store.map(card => {
-            return (
-              <Card {...card} key={card.id} toBasket={toBasket}/>
-            );
-          })}
+          {
+              showcase.map(card => {
+                const props = {...card, key: card.id, addToBasket}
+                return <Card {...props} />
+              })
+          }
         </div>
     </>
   );
 }
 
 const mapStateToProps = state => {
-    return {store: state.store};
+    return {showcase: state.showcase};
 };
 
 const mapDispatchToProps = dispatch => {
-  fetch('products.json')
-    .then(res => res.json())
-    .then(arr => dispatch(initShowcase(arr)))  
-  return {
-    toBasket: id => {
-      dispatch(toBasket(id));
-      alert('The item is added into the basket.')
-    }
-  };
+    axios({
+        method: 'GET',
+        url: 'products.json'
+    })
+    .then(obj => {
+        //debugger
+        dispatch(createStore(obj.data))
+    })  
+    return {addToBasket: id => dispatch(addToBasket(id))}
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FulfillShowcase);
+export default connect(mapStateToProps, mapDispatchToProps)(mapState)
 

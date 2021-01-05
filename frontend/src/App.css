@@ -1,6 +1,11 @@
 .card-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
+}
+
+.basket-footer {
+    margin: 1rem;
+    text-align: center;
 }
 
 h2 {

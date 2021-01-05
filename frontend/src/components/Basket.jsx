@@ -1,41 +1,43 @@
-import { connect } from 'react-redux';
-import { incrAmount, decrAmount } from '../actions';
-import Card from './Card';
+import { useState } from 'react'
+import Purchases from './Purchases'
+import Order from './Order'
+import Personal from './Personal'
+import Congrats from './Congrats'
 
-function FulfillBasket ({basket, incrAmount, decrAmount}) {
-  return (
-    <>  
-        <h2>The Basket</h2>      
-        <div className="row">
-          {basket.map(card => {
+const PURCHASES = 0
+const ORDER     = 1
+const CONGRATS  = 2
+
+export default function() {
+    const [stage, setStage] = useState(PURCHASES)
+    switch(stage){
+        case ORDER:
             return (
-              <Card {...card} key={card.id} incrAmount={incrAmount} decrAmount={decrAmount} />
-            );
-          })}
-        </div>
-    </>
-  );
+                <>
+                    <h2>Please check and fulfill the information about your order</h2>      
+                    <Order />
+                    <Personal />
+                    <div className="basket-footer">
+                        <button className="btn btn-primary" onClick={()=> setStage(CONGRATS)}>Submit your data</button>
+                    </div>
+                </>
+            )
+        case CONGRATS:
+            return (
+                <>
+                    <Congrats />
+                    <Order />
+                </>
+            )
+    }
+    return (
+        <>
+            <h2>Your purchases</h2>      
+            <Purchases />
+            <div className="basket-footer">
+                <button className="btn btn-primary" onClick={()=> setStage(ORDER)}>Order your purchases</button>
+            </div>
+            <br/>
+        </>
+    )
 }
-
-const mapStateToProps = state => {
-    return {basket: state.basket};
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    incrAmount: id => {
-      alert('incr')
-      dispatch(incrAmount(id));
-    },
-    decrAmount: id => {
-      alert('decr')
-      dispatch(decrAmount(id));
-    },
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FulfillBasket);
-
