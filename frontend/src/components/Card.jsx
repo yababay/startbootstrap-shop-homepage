@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 
 export default function (props) {
 
-    const {id, addToBasket, increaseQuantity, decreaseQuantity, title, description} = props
+    const {id, addToBasket, increaseQuantity, decreaseQuantity, name, description, price} = props
     const quantity = useSelector(state => {
         if(!!addToBasket) return ''
         const items = state.basket.filter(el => el.id === id)
@@ -17,9 +17,9 @@ export default function (props) {
                 <a href="#"><img className="card-img-top" src="http://placehold.it/700x400" alt=""/></a>
                 <div className="card-body">
                     <h4 className="card-title">
-                        <a href="#">{title}</a>
+                        <a href="#">{name}</a>
                     </h4>
-                    <h5>$24.99</h5>
+                    <h5>${price}</h5>
                     <p className="card-text">{description}</p>
                     {quantity}
                 </div>
