@@ -1,0 +1,5 @@
+[
+    {"id": 123, "name": "abc", "description": "Lorem ipsum", "price": 123.45},
+    {"id": 456, "name": "def", "description": "Lorem ipsum", "price": 456.78},
+    {"id": 789, "name": "ghi", "description": "Lorem ipsum", "price": 789.01}
+]

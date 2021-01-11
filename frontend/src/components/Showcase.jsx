@@ -26,12 +26,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     axios({
         method: 'GET',
-        url: 'http://localhost:4040/products'
-        //url: 'products.json'
+        //url: 'http://localhost:4040/products'
+        url: 'products.json'
     })
     .then(obj => {
         //debugger
-        dispatch(createStore(obj.data.data))
+        //dispatch(createStore(obj.data.data))
+        dispatch(createStore(obj.data))
     })  
     return {addToBasket: id => dispatch(addToBasket(id))}
 };

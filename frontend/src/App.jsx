@@ -2,7 +2,6 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 import Basket   from './components/Basket'
 import Showcase from './components/Showcase'
 import Welcome  from './components/Welcome'
-import './App.css'
 
 function App(props) {
 
