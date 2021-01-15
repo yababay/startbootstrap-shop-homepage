@@ -28,6 +28,7 @@ export const Provider = props => {
     const basketContext = {
         basket,
         resetBasket,
+        setBasket
     }
 
     return <Context.Provider value={basketContext}>{children}</Context.Provider>

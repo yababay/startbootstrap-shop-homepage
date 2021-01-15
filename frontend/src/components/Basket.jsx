@@ -10,8 +10,23 @@ export default function(props){
 
     return (
         <div className="showcase">
-            <h1>{headline}</h1>
-            <Cards products={basket} resetBasket={resetBasket}/> 
+            <h2>{headline}</h2>
+            {
+                basket.length ?
+                (
+                    <>
+                        <Cards products={basket} resetBasket={resetBasket}/> 
+                        <hr />
+                        <div className="basket-bottom">
+                            <button className="btn btn-primary" onClick={() => window.location = '#/order'}>
+                                Order these items
+                            </button>
+                        </div>
+                    </>
+                )
+                :
+                ''
+            }
         </div> 
     )
 }
