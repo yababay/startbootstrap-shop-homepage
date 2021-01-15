@@ -12,14 +12,14 @@ import Congrats from './components/Congrats'
 function App(props) {
 
     const urlFromProps = (props, topList) => {
-        const prefix = '/api/v1/product'
+        const prefix = 'http://localhost:3001/api/v1/product'
         let path = ''
         if(topList) path = 'toplist'
         if(props.match){
             const {sector, size} = props.match.params
             if(sector && size) path = `${sector}/${size}`
         }
-        return <Showcase url={`${prefix}/${path}`} mock={true}/>
+        return <Showcase url={`${prefix}/${path}`} mock={false}/>
     }
 
     return (
