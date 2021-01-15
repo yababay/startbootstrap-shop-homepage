@@ -19,3 +19,8 @@ body {
 .av-left-side-menu {
   margin-top: 24px;
 }
+
+.card-footer p {
+    display: flex;
+    justify-content: space-around;
+}

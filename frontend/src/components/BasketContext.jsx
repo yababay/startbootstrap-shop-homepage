@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export const Context = createContext({});
@@ -6,22 +6,23 @@ export const Context = createContext({});
 export const Provider = props => {
 
     const {children} = props
+
+    const restoreBasket = ()=> {
+        const basketString = localStorage.getItem('basket')
+        return basketString && JSON.parse(basketString).filter(el => el.amount > 0) || []
+    }
   
-    const [basket, setBasket] = useState([]);
+    const [basket, setBasket] = useState(restoreBasket());
 
     const resetBasket = (item, amount = 1) => {
-        if(item){
-            item.amount = amount
-            let items = basket.filter(el => el.id == item.id)
-            if(items.length) item.amount += items[0].amount
-            items = basket.filter(el => el.id != item.id)
-            setBasket([...items, item])
-            localStorage.setItem('basket', JSON.stringify(basket))
-            return 
-        }
-        const basketString = localStorage.getItem('basket')
-        if(!basketString) return
-        setBasket(JSON.parse(basketString))
+        item.amount = amount
+        let items = basket.filter(el => el.id == item.id)
+        if(items.length) item.amount += items[0].amount
+        items = basket.filter(el => el.id != item.id)
+        if(item.amount < 1 && !window.confirm('Remove the item from the basket?')) item.amount = 1
+        items = (item.amount ? [...items, item] : items).sort((a, b) => a.id - b.id)
+        setBasket(items)
+        localStorage.setItem('basket', JSON.stringify(basket))
     }
 
     const basketContext = {

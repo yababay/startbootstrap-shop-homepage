@@ -20,7 +20,17 @@ export default function (props) {
                     <p class="card-text">{description}</p>
                 </div>
                 <div class="card-footer">
-                    <button onClick={()=>resetBasket({id, price, description, title}, 1)}>More...</button>
+                        {
+                            amount ?
+                            (
+                                <p>
+                                    <button className="btn btn-primary" onClick={()=>resetBasket({id, price, description, title}, 1)}>More</button>
+                                    <button className="btn btn-primary" onClick={()=>resetBasket({id, price, description, title}, -1)}>Less</button>
+                                </p>
+                            )
+                            :
+                            ( <p><button className="btn btn-primary" onClick={()=>resetBasket({id, price, description, title}, 1)}>To basket</button></p> )
+                        }
                 </div>
             </div>
         </div>
