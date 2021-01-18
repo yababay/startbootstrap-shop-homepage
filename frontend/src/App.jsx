@@ -19,7 +19,7 @@ function App(props) {
             const {sector, size} = props.match.params
             if(sector && size) path = `${sector}/${size}`
         }
-        return <Showcase url={`${prefix}/${path}`} mock={false}/>
+        return <Showcase url={`${prefix}/${path}`} mock={true}/>
     }
 
     return (
