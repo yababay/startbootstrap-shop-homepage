@@ -1,32 +1,31 @@
-import { useContext } from 'react'
-import Cards from './Cards'
-import {Context} from './BasketContext'
+import { useSelector } from 'react-redux';
+import Item from './Item'
 
-export default function(props){
+export  default  function Basket (props) {
 
-    const basketContext = useContext(Context)
-    const {basket, resetBasket} = basketContext
-    const headline = basket.length ? 'The content of your basket' : 'There are no items in the basket'
+    const basket = useSelector(state => state.basket);
+    const {products} = basket
 
     return (
-        <div className="showcase">
-            <h2>{headline}</h2>
-            {
-                basket.length ?
-                (
+            <div className="uk-container">
+                <h1>The basket</h1>
+                <div className="uk-grid uk-child-width-1-3 ui-flex" uk-grid>
+                    {products/*.filter(item => item.qnty > 0)*/.map(item => <Item {...item} />)}
+                </div>
+                <p className="uk-margin">
+                {
+                    products.length ?
                     <>
-                        <Cards products={basket} resetBasket={resetBasket}/> 
-                        <hr />
-                        <div className="basket-bottom">
-                            <button className="btn btn-primary" onClick={() => window.location = '#/order'}>
-                                Order these items
-                            </button>
-                        </div>
+                    <a className="uk-button uk-button-default" href="#/store">Back to store</a>
+                    <a className="uk-button uk-button-default" href="#/form">Order them</a>
                     </>
-                )
-                :
-                ''
-            }
-        </div> 
+                    :
+                    <>
+                    <span>It is empty. Please select somthing&nbsp;</span>
+                    <a href="#/store"> in the store</a>
+                    </>
+                }
+                </p>
+            </div>
     )
 }

@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/shop-homepage.css" rel="stylesheet">    
-    <title>Simple shop</title>
-</head>
-<body>
-
-    <main></main>
-    
-    <footer class="py-5 bg-dark">
-        <div class="container">
-          <p class="m-0 text-center text-white">Copyright &copy; Anna Veronica 2021</p>
-        </div>
-    </footer>    
-
-    <!-- For the carousel -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-</body>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <title>Web shop</title>
+    </head>
+    <body>
+        <header>
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <a href="#/" class="uk-navbar-item uk-logo">Web Shop</a>
+            </div>
+            <div class="uk-navbar-center">
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a href="#/store">Store</a></li>
+                    <li><a href="#/basket">Basket&nbsp;<span id="total-price"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+        </header>
+        <div id="root" class="uk-section"></div>
+        <hr>
+        <footer>
+            <span>Author: Khava.</span>
+        </footer>
+    </body>
 </html>
+
+

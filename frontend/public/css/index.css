@@ -1,0 +1,25 @@
+header {
+    height: 85px;
+    width: 100%;
+}
+
+footer {
+    height: 3rem;
+    line-height: 3rem;
+    width: 100%;
+}
+
+#root {
+    width: 100%;
+    min-height: calc(100vh - 3rem - 130px);
+}
+
+footer, header, #root {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#formik-error {
+    color: orange;
+}
